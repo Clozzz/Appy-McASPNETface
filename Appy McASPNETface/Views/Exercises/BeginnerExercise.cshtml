@@ -1,0 +1,126 @@
+﻿@{
+    ViewData["Title"] = "Beginner Exercise";
+}
+
+
+<div class="container-fluid justify-content-center">
+    <div class="row justify-content-center">
+        <h1>Beginner Exercises</h1>
+    </div>
+
+    <div class="container" id="completeExercise1">
+        <div class="row">
+            <h4>Beginner Exercise 1: Event Handling</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Print Hello World and your name in a separate line on button click.</p>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" id="submit1">Click Here</button>
+            </div>
+            <div class="col-md-4" id="output1">
+                <p id="hello" style="padding-left: 2em;"></p>
+                <p id="name" style="padding-left: 2em;"></p>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container" id="completeExercise2">
+        <div class="row">
+            <h4>Beginner Exercise 2: Event Handling With Input</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>
+                    Sum two input numbers together.
+                </p>
+                <input type="number" id="number1" />
+                <input type="number" id="number2" />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" id="submit2">Click Here</button>
+            </div>
+            <div class="col-md-4" id="output2" style="padding-left: 2em;">
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container" id="completeExercise3">
+        <div class="row">
+            <h4>Beginner Exercise 3: Event Handling With Input And Condition</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Subtract one number from another number by identifying the highest number given and subtracting the lower number</p>
+                <input type="number" id="number3" />
+                <input type="number" id="number4" />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" id="submit3">Click Here</button>
+            </div>
+            <div class="col-md-4" id="output3" style="padding-left: 2em;">
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container" id="completeExercise4">
+        <div class="row">
+            <h4>Beginner Exercise 4: Event Handling String Input and For Loops</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Take an input string and repeat each character in an expanding tree pattern.</p>
+                <input type="text" id="text1" />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" id="submit4">Click Here</button>
+            </div>
+            <div class="col-md-4" id="output4" style="padding-left: 2em;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        // Function for first button
+        $("#submit1").click(function (e) {
+            $("#hello").html("Hello World.");
+            $("#name").html("This is Clinton T. McGuire.");
+        });
+
+        // Function for second button
+        $("#submit2").click(function (e) {
+            var result = (parseInt($("#number1").val()) + parseInt($("#number2").val()));
+            $("#output2").html(result);
+        });
+
+        // Function for third button
+        $("#submit3").click(function (e) {
+            var num1 = parseInt($("#number3").val());
+            var num2 = parseInt($("#number4").val());
+            var result;
+            if (num1 >= num2) {
+                result = (num1 - num2);
+            }
+            else {
+                result = (num2 - num1);
+            }
+            $("#output3").html(result);
+        });
+
+        // Function for fourth button
+        $("#submit4").click(function (e) {
+            var string1 = $("#text1").val();
+            
+        });
+        
+    </script>
+}
