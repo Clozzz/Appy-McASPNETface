@@ -119,7 +119,14 @@
         // Function for fourth button
         $("#submit4").click(function (e) {
             var string1 = $("#text1").val();
-            
+            var stringLength1 = string1.length;
+            const treeArray = [];
+            const testArray = [1, 2, 3, 4, 5];
+            for (let i = 0; i < stringLength1; i++) {
+                treeArray[i] = string1.charAt(i).repeat(i+1) + "<br>";
+                console.log(treeArray[i]);
+            }
+            $("#output4").html(treeArray);
         });
         
     </script>
