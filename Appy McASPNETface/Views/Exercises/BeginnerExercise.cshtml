@@ -172,7 +172,7 @@
             }
         });
 
-        function hasSum(arr, k) {
+        function hasSum(arr, a) {
             hashMap = {};
             for (let i of arr) {
                 if (hashMap[i]) { return true; } else { hashMap[k - i] = true };
