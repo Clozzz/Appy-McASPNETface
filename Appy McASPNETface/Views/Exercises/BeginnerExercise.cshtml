@@ -37,8 +37,8 @@
                 <p>
                     Sum two input numbers together.
                 </p>
-                <input type="number" id="number1" />
-                <input type="number" id="number2" />
+                <input type="number" id="input1" />
+                <input type="number" id="input2" />
             </div>
             <div class="col-md-4">
                 <button class="btn btn-outline-dark" id="submit2">Click Here</button>
@@ -57,8 +57,8 @@
         <div class="row">
             <div class="col-md-4">
                 <p>Subtract one number from another number by identifying the highest number given and subtracting the lower number</p>
-                <input type="number" id="number3" />
-                <input type="number" id="number4" />
+                <input type="number" id="input3" />
+                <input type="number" id="input4" />
             </div>
             <div class="col-md-4">
                 <button class="btn btn-outline-dark" id="submit3">Click Here</button>
@@ -86,6 +86,35 @@
             </div>
         </div>
     </div>
+
+    <hr />
+
+    <div class="container" id="completeExercise5">
+        <div class="row">
+            <h4>Beginner Exercise 5: Array Handling and Checking</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Given a list of numbers and a number <i>k</i>, return whether any two numbers from the list add up to <i>k</i>.</p>
+                <p>For example, given [10, 15, 3, 7] and <i>k</i> of 17, return true since 10+7 is 17.</p>
+                <p>Bonsu: Do this in one pass.</p>
+                <p>Number Input</p>
+                <input type="number" id="input5" />
+                <p>Number Input for Array (Five number max)</p>
+                <input type="number" id="arrNum0" value="" /><br />
+                <input type="number" id="arrNum1" value="" /><br />
+                <input type="number" id="arrNum2" value="" /><br />
+                <input type="number" id="arrNum3" value="" /><br />
+                <input type="number" id="arrNum4" value="" /><br />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" id="submit5">Click Here</button>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4" id="output5" style="padding-left: 2em;"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scripts{
@@ -98,14 +127,14 @@
 
         // Function for second button
         $("#submit2").click(function (e) {
-            var result = (parseInt($("#number1").val()) + parseInt($("#number2").val()));
+            var result = (parseInt($("#input1").val()) + parseInt($("#input2").val()));
             $("#output2").html(result);
         });
 
         // Function for third button
         $("#submit3").click(function (e) {
-            var num1 = parseInt($("#number3").val());
-            var num2 = parseInt($("#number4").val());
+            var num1 = parseInt($("#input3").val());
+            var num2 = parseInt($("#input4").val());
             var result;
             if (num1 >= num2) {
                 result = (num1 - num2);
@@ -121,13 +150,35 @@
             var string1 = $("#text1").val();
             var stringLength1 = string1.length;
             const treeArray = [];
-            const testArray = [1, 2, 3, 4, 5];
             for (let i = 0; i < stringLength1; i++) {
                 treeArray[i] = string1.charAt(i).repeat(i+1) + "<br>";
                 console.log(treeArray[i]);
             }
             $("#output4").html(treeArray);
         });
+
+        // Function for fifth button
+
+        $("#submit5").click(function (e) {
+            var numInput = parseInt($("#input5").val());
+            const arrInput = [parseInt($("#arrNum0").val()), parseInt($("#arrNum1").val()),
+                parseInt($("#arrNum2").val()), parseInt($("#arrNum3").val()),
+                parseInt($("#arrNum4").val()),];
+            if (hasSum(arrInput, numInput)) {
+                $("#output5").html("True");
+            }
+            else {
+                $("#output5").html("False");
+            }
+        });
+
+        function hasSum(arr, k) {
+            hashMap = {};
+            for (let i of arr) {
+                if (hashMap[i]) { return true; } else { hashMap[k - i] = true };
+            }
+            return false;
+        }
         
     </script>
 }
