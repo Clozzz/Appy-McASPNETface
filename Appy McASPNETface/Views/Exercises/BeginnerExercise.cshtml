@@ -103,38 +103,11 @@
                 <button class="btn btn-outline-dark" id="submit5">Click Here</button>
                 <p>Number Input</p>
                 <input type="number" id="input5" />
-                <p>Number Input for Array (Five number max)</p>
-                <input type="number" id="arrNum0" value="0" /><br />
-                <input type="number" id="arrNum1" value="0" /><br />
-                <input type="number" id="arrNum2" value="0" /><br />
-                <input type="number" id="arrNum3" value="0" /><br />
-                <input type="number" id="arrNum4" value="0" /><br />
+                <p>Number Input for Array, please enter numbers separated by commas.</p>
+                <input type="text" id="arrInput1" value="0" />
             </div>
             <div class="col-md-4">
                 <div id="output5" style="padding-left: 2em;"></div>
-            </div>
-        </div>
-    </div>
-
-    <hr />
-    
-    <div class="container" id="completeExercise6">
-        <div class="row">
-            <h4>Beginner Exercise 6: Array Handling, Checking, and Populating</h4>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <p>Given an array of integers, return a new array such that each element at index i of the new array is the product of all numbers in the original array except the one at i.</p>
-                <p>For example, if our input was [1, 2, 3, 4, 5] the expected output would be [120, 60, 40, 30, 24]</p>
-                <p>If our input was [3, 2, 1] the expected output would be [2, 3, 6].</p>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-outline-dark" id="submit6">Click Here</button>
-                <p>Enter a series of numbers separated by commas</p>
-                <input type="text" id="input6" />
-            </div>
-            <div class="col-md-4">
-                <div id="output6" style="padding-left: 2em;"></div>
             </div>
         </div>
     </div>
@@ -184,11 +157,12 @@
         // Function for fifth button
 
         $("#submit5").click(function (e) {
-            var numInput = parseInt($("#input5").val());
-            const arrInput = [parseInt($("#arrNum0").val()), parseInt($("#arrNum1").val()),
-                parseInt($("#arrNum2").val()), parseInt($("#arrNum3").val()),
-                parseInt($("#arrNum4").val())];
-            if (hasSum(arrInput, numInput)) {
+
+            var numInput = $("#input5").val();
+            var seriesInput = $("#arrInput1").val();
+            var arrFromInput = seriesInput.split(',');
+
+            if (hasSum(arrFromInput, numInput)) {
                 $("#output5").html("True");
             }
             else {
@@ -203,47 +177,6 @@
             }
             return false;
         }
-
-        // Function for sixth button
-
-        $("#submit6").click(function (e) {
-            var seriesInput = $("#input6").val();
-            var arrFromInput = seriesInput.split(',');
-            if (arrFromInput.length == 1) {
-                $("#output6").html("No array input");
-            }
-
-            let left = new Array(arrFromInput.length);
-            let right = new Array(arrFromInput.length);
-            let prod = new Array(arrFromInput.length);
-
-            let i, j;
-
-            // left most element of left array is always 1
-            left[0] = 1;
-
-            // right most element of right array is always 1
-            right[right.length - 1] = 1;
-
-            // Construct the left array
-            for (i = 1; i < arrFromInput.length; i++) {
-                left[i] = arrFromInput[i - 1] * left[i - 1];
-            }
-            console.log(left);
-
-            // Construct the right array
-            for (j = arrFromInput.length - 2; j >= 0; j--) {
-                right[j] = arrFromInput[j+1]*right[j+1]
-            }
-            console.log(right);
-
-            // Construct the product array using left arr and right arr
-            for (i = 0; i < arrFromInput.length; i++) {
-                prod[i] = left[i] * right[i];
-            }
-
-            $("#output6").html(prod);
-        });
         
     </script>
 }

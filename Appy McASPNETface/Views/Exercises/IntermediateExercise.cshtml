@@ -6,4 +6,65 @@
     <div class="row justify-content-center">
         <h1>Intermediate Exercises</h1>
     </div>
+
+    <div class="container" id="completeExercise6">
+        <div class="row">
+            <h4>Intermediate Exercise 1: Array Handling, Checking, and Populating</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Given an array of integers, return a new array such that each element at index i of the new array is the product of all numbers in the original array except the one at i.</p>
+                <p>For example, if our input was [1, 2, 3, 4, 5] the expected output would be [120, 60, 40, 30, 24]</p>
+                <p>If our input was [3, 2, 1] the expected output would be [2, 3, 6].</p>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-outline-dark" id="submit1">Click Here</button>
+                <p>Enter a series of numbers separated by commas</p>
+                <input type="text" id="input1" />
+            </div>
+            <div class="col-md-4">
+                <div id="output1" style="padding-left: 2em;"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section scripts {
+<script>
+
+    $("#submit1").click(function (e) {
+        var seriesInput = $("#input1").val();
+        var arrFromInput = seriesInput.split(',');
+
+        let left = new Array(arrFromInput.length);
+        let right = new Array(arrFromInput.length);
+        let prod = new Array(arrFromInput.length);
+
+        let i, j;
+
+        // left most element of left array is always 1
+        left[0] = 1;
+
+        // right most element of right array is always 1
+        right[right.length - 1] = 1;
+
+        // Construct the left array
+        for (i = 1; i < arrFromInput.length; i++) {
+            left[i] = arrFromInput[i - 1] * left[i - 1];
+        }
+
+        // Construct the right array
+        for (j = arrFromInput.length - 2; j >= 0; j--) {
+            right[j] = arrFromInput[j + 1] * right[j + 1]
+        }
+
+        // Construct the product array using left arr and right arr
+        for (i = 0; i < arrFromInput.length; i++) {
+            prod[i] = left[i] * right[i] + " ";
+        }
+
+        $("#output1").html(prod);
+    });
+
+</script>
+}
